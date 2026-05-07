@@ -64,12 +64,13 @@ const PORT = 54321;
 
 ## Project Structure
 
+```
 proxy-globe/  
 ├── server.js  
 ├── package.json  
 ├── .gitignore  
 └── README.md  
-
+```
 
 ## Disclaimer
 
