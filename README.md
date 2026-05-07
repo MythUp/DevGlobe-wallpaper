@@ -66,10 +66,11 @@ const PORT = 54321;
 
 ```
 proxy-globe/  
-├── server.js  
-├── package.json  
 ├── .gitignore  
-└── README.md  
+├── package-lock.json  
+├── package.json  
+├── README.md
+└── server.js  
 ```
 
 ## Disclaimer
