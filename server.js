@@ -9,28 +9,23 @@ const proxy = httpProxy.createProxyServer({
     ws: true,
     secure: true,
     selfHandleResponse: true,
-
     headers: {
         "accept-encoding": "identity"
     }
 });
-
 
 // =========================
 // JS injecté
 // =========================
 const injectedScript = `
 <script>
-
 (function () {
 
 function cleanUI() {
 
-    // 🌍 Globe fullscreen
     const globe = document.querySelector("#globe-card");
 
     if (globe) {
-
         globe.style.position = "fixed";
         globe.style.inset = "0";
         globe.style.width = "100vw";
@@ -39,42 +34,23 @@ function cleanUI() {
         globe.style.background = "black";
     }
 
-    // 🧹 Activity
-    document.querySelectorAll('div.z-\\\\[660\\\\]')
-        .forEach(e => e.remove());
+    document.querySelectorAll('div.z-\\\\[660\\\\]').forEach(e => e.remove());
+    document.querySelectorAll('div.z-\\\\[650\\\\]').forEach(e => e.remove());
 
-    // 🧹 Toolbar
-    document.querySelectorAll('div.z-\\\\[650\\\\]')
-        .forEach(e => e.remove());
+    document.querySelectorAll('div.z-\\\\[600\\\\]').forEach(div => {
+        const txt = (div.textContent || "").toLowerCase();
+        if (txt.includes("search developers") || div.querySelector("input")) {
+            div.remove();
+        }
+    });
 
-    // 🧹 Search
-    document.querySelectorAll('div.z-\\\\[600\\\\]')
-        .forEach(div => {
-
-            const txt = (div.textContent || "").toLowerCase();
-
-            if (
-                txt.includes("search developers") ||
-                div.querySelector("input")
-            ) {
-                div.remove();
-            }
-        });
-
-    // 🧹 Buttons
     document.querySelectorAll("button").forEach(btn => {
-
         const txt = (btn.textContent || "").toLowerCase();
-
-        if (
-            txt.includes("sign in") ||
-            btn.querySelector(".lucide-expand")
-        ) {
+        if (txt.includes("sign in") || btn.querySelector(".lucide-expand")) {
             btn.remove();
         }
     });
 
-    // 🔒 Disable interactions
     document.querySelectorAll("*").forEach(el => {
         el.style.pointerEvents = "none";
         el.style.userSelect = "none";
@@ -88,44 +64,34 @@ cleanUI();
 setInterval(cleanUI, 500);
 
 })();
-
 </script>
 `;
 
-
 // =========================
-// Injection HTML
+// Proxy response
 // =========================
 proxy.on("proxyRes", (proxyRes, req, res) => {
 
-    const contentType =
-        proxyRes.headers["content-type"] || "";
+    const contentType = proxyRes.headers["content-type"] || "";
+
+    // 🔥 IMPORTANT : remove CSP (avant toute réponse)
+    delete proxyRes.headers["content-security-policy"];
+    delete proxyRes.headers["content-security-policy-report-only"];
 
     // non HTML
     if (!contentType.includes("text/html")) {
-
-        res.writeHead(
-            proxyRes.statusCode,
-            proxyRes.headers
-        );
-
+        res.writeHead(proxyRes.statusCode, proxyRes.headers);
         proxyRes.pipe(res);
-
         return;
     }
 
     let body = [];
 
-    proxyRes.on("data", chunk => {
-        body.push(chunk);
-    });
+    proxyRes.on("data", chunk => body.push(chunk));
 
     proxyRes.on("end", () => {
-
         try {
-
-            body = Buffer.concat(body)
-                .toString("utf8");
+            body = Buffer.concat(body).toString("utf8");
 
             body = body.replace(
                 "</body>",
@@ -134,21 +100,15 @@ proxy.on("proxyRes", (proxyRes, req, res) => {
 
             delete proxyRes.headers["content-length"];
 
-            res.writeHead(
-                proxyRes.statusCode,
-                proxyRes.headers
-            );
-
+            res.writeHead(proxyRes.statusCode, proxyRes.headers);
             res.end(body);
 
         } catch (e) {
-
             console.error(e);
             res.end();
         }
     });
 });
-
 
 // =========================
 // Routes
@@ -156,7 +116,6 @@ proxy.on("proxyRes", (proxyRes, req, res) => {
 app.use((req, res) => {
     proxy.web(req, res);
 });
-
 
 // =========================
 // WebSocket

@@ -73,17 +73,6 @@ proxy-globe/
 └── server.js  
 ```
 
-## Disclaimer
-
-This project is intended for personal and educational use only.
-
-Do not use it for:
-
-* bypassing restrictions on third-party websites
-* commercial redistribution of proxied content
-* unauthorized scraping or modification of external services
-
-
 ## Credits
 
 [DevGlobe](https://devglobe.xyz) is developed and maintained by [CaadriFR](https://github.com/CaadriFR) and [Nakooo](https://github.com/Nako0).
