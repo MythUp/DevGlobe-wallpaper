@@ -1,8 +1,12 @@
 # 🌍 Globe Proxy Wallpaper Tool
 
+<a href="https://devglobe.xyz/projects/devglobe-wallpaper?utm_source=badge&utm_medium=embed" target="_blank" rel="noopener">
+  <img src="https://devglobe.xyz/badges/built-on-devglobe-dark.svg" alt="Built on DevGlobe" width="250" height="54" />
+</a>
+
 A Node.js proxy server that intercepts and modifies the content of [devglobe.xyz](https://devglobe.xyz) in real time to turn it into a clean, usable live wallpaper.
 
-This project is designed to be used with [Lively Wallpaper](https://www.rocksdanister.com/lively/) to display a fully customized interactive globe as a desktop wallpaper.
+This project is designed to be used with [Lively Wallpaper](https://www.rocksdanister.com/lively/) to display a fully customized globe as a desktop wallpaper.
 
 
 ## Purpose
