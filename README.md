@@ -1,5 +1,7 @@
 # 🌍 Globe Proxy Wallpaper Tool
 
+![Nom](./screenshots/screenshot-desktop.webp)
+
 <a href="https://devglobe.xyz/projects/devglobe-wallpaper?utm_source=badge&utm_medium=embed" target="_blank" rel="noopener">
   <img src="https://devglobe.xyz/badges/built-on-devglobe-dark.svg" alt="Built on DevGlobe" width="250" height="54" />
 </a>
