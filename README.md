@@ -2,11 +2,11 @@
 
 ![Nom](./screenshots/screenshot-desktop.webp)
 
-<a href="https://devglobe.xyz/projects/devglobe-wallpaper?utm_source=badge&utm_medium=embed" target="_blank" rel="noopener">
-  <img src="https://devglobe.xyz/badges/built-on-devglobe-dark.svg" alt="Built on DevGlobe" width="250" height="54" />
+<a href="https://devglobe.app/projects/devglobe-wallpaper?utm_source=badge&utm_medium=embed" target="_blank" rel="noopener">
+  <img src="https://devglobe.app/badges/built-on-devglobe-dark.svg" alt="Built on DevGlobe" width="250" height="54" />
 </a>
 
-A Node.js proxy server that intercepts and modifies the content of [devglobe.xyz](https://devglobe.xyz) in real time to turn it into a clean, usable live wallpaper.
+A Node.js proxy server that intercepts and modifies the content of [devglobe.app](https://devglobe.app) in real time to turn it into a clean, usable live wallpaper.
 
 This project is designed to be used with [Lively Wallpaper](https://www.rocksdanister.com/lively/) to display a fully customized globe as a desktop wallpaper.
 
@@ -77,4 +77,4 @@ proxy-globe/
 
 ## Credits
 
-[DevGlobe](https://devglobe.xyz) is developed and maintained by [CaadriFR](https://github.com/CaadriFR) and [Nakooo](https://github.com/Nako0).
+[DevGlobe](https://devglobe.app) is developed and maintained by [CaadriFR](https://github.com/CaadriFR) and [Nakooo](https://github.com/Nako0).
